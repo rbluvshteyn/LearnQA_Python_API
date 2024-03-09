@@ -40,4 +40,4 @@ class TestUserAgent:
 
         assert platform == dict_response["platform"], f"Wrong platform value:\"{dict_response['platform']}\" for user-agent:{user_agent}"
         assert browser == dict_response["browser"], f"Wrong browser value:\"{dict_response['browser']}\" for user-agent:{user_agent}"
-        assert device == dict_response["device"], f"Wrong platform value:\"{dict_response['device']}\" for user-agent:{user_agent}"
+        assert device == dict_response["device"], f"Wrong device value:\"{dict_response['device']}\" for user-agent:{user_agent}"
