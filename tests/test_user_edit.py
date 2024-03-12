@@ -106,7 +106,7 @@ class TestUserEdit(BaseCase):
         token2 = self.get_header(response4, "x-csrf-token")
         user_id2 = self.get_json_value(response4, "user_id")
 
-        # Пытаемся изменить Имя пользователя №2 будучи авторизованным пользователем №1
+        # Пытаемся изменить имя user2 будучи авторизованным user1
         new_email = f"new{self.random_part}@mail.ru"
 
         response5 = MyRequests.put(
