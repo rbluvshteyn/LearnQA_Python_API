@@ -2,8 +2,11 @@ from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
 from datetime import datetime
+import allure
 
+@allure.epic("Get cases")
 class TestUserGet(BaseCase):
+    @allure.description("Тест на получение данных неавторизованным пользователем")
     # Получение данных неавторизованным пользователем
     def test_get_user_detail_not_auth(self):
         response = MyRequests.get("/user/2")
@@ -13,6 +16,7 @@ class TestUserGet(BaseCase):
         Assertions.assert_json_has_not_key(response, "firstName")
         Assertions.assert_json_has_not_key(response, "lastName")
 
+    @allure.description("Тест на Получение данных пользователем о себе")
     # Получение данных пользователем о себе
     def test_get_user_detail_auth_as_same_user(self):
         data = {
@@ -35,6 +39,7 @@ class TestUserGet(BaseCase):
         expected_fields = ["username", "email", "firstName", "lastName"]
         Assertions.assert_json_has_keys(response2, expected_fields)
 
+    @allure.description("Тест на получение одним пользователем данных другого пользователя")
     # Получение одним пользователем данных другого пользователя
     def test_get_user_detail_from_other_user(self):
         # Создаем 2 юзера, проверяем что все ок
